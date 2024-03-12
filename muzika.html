@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Тестовый сайт">
+  <meta name="author" content="Хамидзода Исмоил">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>pleer</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  
+  body{
+    background-image: url(kartinka/musica.gif);
+    background-size: cover;
+    background-position: center;
+}
+  
+  p{
+    color: white;
+  }
+  
+  .menu-icon {
+            display: flex;
+            background: transparent; 
+            backdrop-filter: blur(15px); 
+            border: 2px solid rgba(255, 255, 255, .5); 
+            border-radius: 15px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            position: fixed;
+            left: 0;
+            top: -1px;
+            z-index: 9999;
+        }
+        
+        .menu-icon span {
+            width: 100%;
+            height: 4px;
+            background-color: white;
+            margin-bottom: 4px;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .menu-icon.open span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .menu-icon.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-icon.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        .menu {
+            display: none;
+            position: fixed;
+            top: 40px;
+            left: 0;
+            background: transparent; 
+            backdrop-filter: blur(15px); 
+            border: 2px solid rgba(255, 255, 255, .5); 
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+            animation: slide-down 0.5s ease-in-out;
+            z-index: 9998;
+        }
+  
+  @keyframes slide-down {
+      from {
+        transform: translateY(-100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+        
+        .menu.open {
+            display: block;
+            transform: translateY(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .menu ul li {
+            margin-bottom: 10px;
+        }
+        
+        .menu ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+
+.menu a {
+text-decoration: none;
+color: orange;
+line-height: 1.5em;
+}
+
+.menu a:hover,
+.menu a:focus {
+text-shadow: 0 0 5px red;
+margin-left: 0.5em;
+outline: none;
+position: relative;
+}
+
+.menu a::before {
+position: absolute;
+left: -1em;
+content: ">";
+color: transparent;
+}
+
+.imennoy{
+position: relative;
+display: inline-block;
+text-transform: uppercase;
+color: #03e9f4;
+font-size: 1.2rem;
+font-weight: bold;
+transition: .5s;
+overflow: hidden;
+margin-right: 10px;
+}
+
+.imennoy:hover {
+background-color: #03e9f4;
+color: #1589FF;
+box-shadow: 0 0 5px #03e9f4,
+            0 0 25px #03e9f4,
+            0 0 50px #03e9f4,
+            0 0 200px #03e9f4;
+-webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+  
+  .back{
+    position: fixed;
+    font-size: 50px;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .backk{
+    font-size: 45px;
+    border: 2px solid grey;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    color: #16F529;
+  }
+  
+  .backk:hover {
+background-color: #03e9f4;
+color: #1589FF;
+box-shadow: 0 0 5px #03e9f4,
+            0 0 25px #03e9f4,
+            0 0 50px #03e9f4,
+            0 0 200px #03e9f4;
+-webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+  
+  .background{
+    height: 100px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .header{
+position: relative;
+width: 130px;
+height: 50px;
+border: 2px solid rgba(255, 255, 255, .5);
+border-radius: 20px;
+backdrop-filter: blur(15px);
+display: flex;
+justify-content: center;
+align-items: center;
+    }
+  
+  h1{
+      font-size: 20px;
+      margin: 0;
+      text-align: center;
+      background: linear-gradient(to right, #30CFD0 0%, #1589FF 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  
+    .player {
+      display: flex;
+      background-color: gainsboro;
+      align-items: center;
+      margin-bottom: 10px;
+      border: 3px solid #30CFD0;
+      border-radius: 12px;
+      width: 200px;
+    }
+
+    .player audio {
+      margin-right: 10px;
+    }
+
+    .player button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .player input[type="range"] {
+      width: 200px;
+      margin-left: 5px;
+    }
+  
+  .ml{
+    margin-left: 15px;
+  }
+  
+  .pulsate-bck {
+	-webkit-animation: pulsate-bck 0.5s ease-in-out infinite both;
+	        animation: pulsate-bck 0.5s ease-in-out infinite both;
+}
+  
+@-webkit-keyframes pulsate-bck {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes pulsate-bck {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+  </style>
+</head>
+<body>
+  
+  <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <div class="menu">
+        <ul>
+          <li><a class="imennoy" href="hall.html" style="color: white;">Главная</a></li>
+          <li><a class="imennoy" href="dizaynGpt.html" style="color: white;">О нас</a></li>
+          <li><a class="imennoy" href="index2.html" style="color: white;">Услуги</a></li>
+          <li><a class="imennoy" href="#" style="color: white;">Контакты</a></li>
+        </ul>
+    </div>
+  
+  <div class="back">
+    <a href="index2.html"><ion-icon class="backk" name="arrow-back"></ion-icon></a>
+  </div>
+  
+  <div class="background">
+  <div class="header">
+    <h1 class="pulsate-bck">IziWeb Music</h1>
+  </div>
+    </div><hr><br><br>
+  
+  <div class="glav-player">
+  <h1 style="color: white;">Tajik</h1>
+    <div class="ml">
+    <p>Song 1</p>
+    <div class="player">
+    <audio id="player1">
+      <source src="/storage/emulated/0/Download/t-muhiddin-yak-handa-kun-ey-gul.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="playPause('player1')" class="myButton"><ion-icon name="play"></ion-icon></button>
+    <button onclick="stop('player1')"><ion-icon name="stop"></ion-icon></button>
+    <input type="range" min="0" max="100" step="1" onchange="seek('player1', this.value)">
+  </div><br><br>
+
+  <p>Song 2</p>
+  <div class="player">
+    <audio id="player2">
+      <source src="/storage/emulated/0/Download/xz-indas.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="playPause('player2')" class="myButton"><ion-icon name="play"></ion-icon></button>
+    <button onclick="stop('player2')"><ion-icon name="stop"></ion-icon></button>
+    <input type="range" min="0" max="100" step="1" onchange="seek('player2', this.value)">
+  </div>
+      </div>
+    </div>
+    <br><hr>
+  
+  <h1 style="color: white;">Russian</h1>
+  <div class="ml">
+  <p>Song 3</p>
+  <div class="player">
+    <audio id="player3">
+      <source src="/storage/emulated/0/Download/Xcho - I Can Fly.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="playPause('player3')" class="myButton"><ion-icon name="play"></ion-icon></button>
+    <button onclick="stop('player3')"><ion-icon name="stop"></ion-icon></button>
+    <input type="range" min="0" max="100" step="1" onchange="seek('player3', this.value)">
+  </div><br><br>
+
+  <p>Song 4</p>
+  <div class="player">
+    <audio id="player4">
+      <source src="/storage/emulated/0/Download/Ahiska - Lezginka.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="playPause('player4')" class="myButton"><ion-icon name="play"></ion-icon></button>
+    <button onclick="stop('player4')"><ion-icon name="stop"></ion-icon></button>
+    <input type="range" min="0" max="100" step="1" onchange="seek('player4', this.value)">
+  </div>
+  </div><br><hr>
+  
+  <h1 style="color: white;">Farsi</h1>
+  <div class="ml">
+  <p>Song 5</p>
+  <div class="player">
+    <audio id="player5">
+      <source src="/storage/emulated/0/Download/Aron Afshar - Khandehato Ghorboun ( آرون افشار - خنده هاتو قربون ) (256  kbps).mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="playPause('player5')" class="myButton"><ion-icon name="play"></ion-icon></button>
+    <button onclick="stop('player5')"><ion-icon name="stop"></ion-icon></button>
+    <input type="range" min="0" max="100" step="1" onchange="seek('player5', this.value)">
+  </div><br><br>
+  
+  <p>Song 6</p>
+  <div class="player">
+    <audio id="player6">
+      <source src="/storage/emulated/0/Download/Kashange.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="playPause('player6')" class="myButton"><ion-icon name="play"></ion-icon></button>
+    <button onclick="stop('player6')"><ion-icon name="stop"></ion-icon></button>
+    <input type="range" min="0" max="100" step="1" onchange="seek('player6', this.value)">
+  </div>
+  </div><br><hr>
+  
+  <h1 style="color: white;">France</h1>
+  <div class="ml">
+  <p>Song 7</p>
+  <div class="player">
+    <audio id="player7">
+      <source src="/storage/emulated/0/Download/indila-derni232re-danse-slowed-down_456241571.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="playPause('player7')" class="myButton"><ion-icon name="play"></ion-icon></button>
+    <button onclick="stop('player7')"><ion-icon name="stop"></ion-icon></button>
+    <input type="range" min="0" max="100" step="1" onchange="seek('player7', this.value)">
+  </div><br><br>
+
+  <p>Song 8</p>
+  <div class="player">
+    <audio id="player8">
+      <source src="/storage/emulated/0/Download/Indila_-_Tourner_Dans_Le_Vide_(Jesusful.com).mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button onclick="playPause('player8')" class="myButton"><ion-icon name="play"></ion-icon></button>
+    <button onclick="stop('player8')"><ion-icon name="stop"></ion-icon></button>
+    <input type="range" min="0" max="100" step="1" onchange="seek('player8', this.value)">
+  </div>
+  </div><br><hr>
+  
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    var currentAudio = null;
+
+    function playPause(playerId) {
+      var audio = document.getElementById(playerId);
+
+      if (currentAudio !== null && currentAudio !== audio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
+      if (audio.paused) {
+        audio.play();
+        currentAudio = audio;
+      } else {
+        audio.pause();
+        currentAudio = null;
+      }
+    }
+
+    function stop(playerId) {
+      var audio = document.getElementById(playerId);
+      audio.pause();
+      audio.currentTime = 0;
+      currentAudio = null;
+    }
+
+    function seek(playerId, value) {
+      var audio = document.getElementById(playerId);
+      var duration = audio.duration;
+      var currentTime = (value / 100) * duration;
+      audio.currentTime = currentTime;
+    }
+
+    window.addEventListener("beforeunload", function() {
+      if (currentAudio !== null) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+    });
+  
+  function toggleMenu() {
+            var menuIcon = document.querySelector('.menu-icon');
+            var menu = document.querySelector('.menu');
+            menuIcon.classList.toggle('open');
+            menu.classList.toggle('open');
+        }
+
+
+
+
+  
+  
+  
+  var buttons = document.getElementsByClassName("myButton");
+
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", function() {
+    var icon = this.querySelector("ion-icon");
+
+    if (icon.getAttribute("name") === "pause") {
+      icon.setAttribute("name", "play");
+      icon.style.color = "white";
+    } else {
+      icon.setAttribute("name", "pause");
+      icon.style.color = "yellow";
+    }
+  });
+}
+  
+  </script>
+</body>
+</html>
